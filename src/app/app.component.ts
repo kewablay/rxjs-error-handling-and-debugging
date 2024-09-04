@@ -61,7 +61,7 @@ export class AppComponent {
       catchError((error) => {
         // Handle error, provide fallback
         console.error('Error occurred:', error);
-        this.error = 'Failed after retries: ' + error.message;
+        this.error = `Failed after ${this.retryCount} attempts`;
         return of([]); // Fallback response as an empty array
       }),
       tap({
@@ -78,7 +78,6 @@ export class AppComponent {
       next: (response) => {
         this.productList = response as any[];
         this.loading = false;
-        this.error = null;
         console.log('Fetched products:', this.productList);
       },
       error: (error) => {
