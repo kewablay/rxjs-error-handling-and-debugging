@@ -38,7 +38,7 @@ export class AppComponent {
 
     return timer(2000).pipe(
       switchMap(() => {
-        if (Math.random() < 0.5) {
+        if (Math.random() < 0.65) {
           return throwError(
             () => new Error('Random simulated error occurred!')
           );
